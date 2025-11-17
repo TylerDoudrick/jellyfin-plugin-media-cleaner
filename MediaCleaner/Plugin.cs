@@ -10,9 +10,9 @@ namespace MediaCleaner
 {
     public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
     {
-        public override string Name => "Media Cleaner";
+        public override string Name => "Media Cleaner Custom";
 
-        public override Guid Id => Guid.Parse("607fee77-97eb-41fe-bf22-26844d99ffb0");
+        public override Guid Id => Guid.Parse("607fee77-97eb-aaaa-bf22-26844d99ffb0");
 
         public Plugin(IApplicationPaths applicationPaths, IXmlSerializer xmlSerializer)
             : base(applicationPaths, xmlSerializer)

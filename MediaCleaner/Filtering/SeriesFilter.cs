@@ -3,6 +3,7 @@ using System.Linq;
 using MediaCleaner.Configuration;
 using MediaBrowser.Controller.Entities.TV;
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
 
 namespace MediaCleaner.Filtering;
 
@@ -26,7 +27,8 @@ internal class SeriesFilter : IExpiredItemFilter
         switch (_kind)
         {
             case SeriesDeleteKind.Season:
-                var seasons = items.GroupBy(x => ((Episode)x.Item).Season?.Id ?? ((Episode)x.Item).Series?.Id);
+                var nonFirstSeasonItems = items.Where(x => ((Episode)x.Item).Season.IndexNumber > 1).ToList();
+                var seasons = nonFirstSeasonItems.GroupBy(x => ((Episode)x.Item).Season?.Id ?? ((Episode)x.Item).Series?.Id);
                 foreach (var season in seasons)
                 {
                     var first = season.MaxBy(x => x.Data?.First()?.LastPlayedDate ?? x.Item.DateCreated);

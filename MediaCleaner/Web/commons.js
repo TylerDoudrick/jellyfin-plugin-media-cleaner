@@ -1,4 +1,4 @@
-export const pluginId = '607fee77-97eb-41fe-bf22-26844d99ffb0'
+export const pluginId = '607fee77-97eb-aaaa-bf22-26844d99ffb0'
 
 export function getTabs() {
     const tabs = [
