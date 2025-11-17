@@ -30,7 +30,6 @@ internal class ExpiredFilter : IExpiredItemFilter
     public List<ExpiredItem> Apply(List<ExpiredItem> items)
     {
         var result = new List<ExpiredItem>();
-        var firstSeasonItems = items.Where(x => ((MediaBrowser.Controller.Entities.Episode)x.Item).Season.IndexNumber == 1).ToList();
 
         foreach (var item in items)
         {
